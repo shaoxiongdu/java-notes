@@ -14,9 +14,6 @@
 <h3><a href="https://shaoxiongdu.github.io/java-notes/#/" target="_blank">在线站点（阅读体验更好）</a></h3>
 </div>
 
-## 总览
-![java-notes](images/java-notes.png)
-
 ## 清单
 
 ---
@@ -97,6 +94,7 @@
 
 -  [注解开发](./Spring/注解开发.md)
 -  [IoC容器源码解析](./Spring/Spring容器源码解析.md)
+-  [SpringBoot-自动配置-源码解析](./Spring/SpringBoot自动配置原理解析.md)
 
 ---
 

@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Animal{}
+class Dog{}
+
+/'继承'/
+Dog -|> Animal
+
+class Car{}
+class Engine{}
+/'关联'/
+Car *-> Engine
+
+class bird{}
+class birdList{}
+birdList o->bird
+
+/'依赖'/
+class A{}
+class B{}
+B ..> A
+
+@enduml

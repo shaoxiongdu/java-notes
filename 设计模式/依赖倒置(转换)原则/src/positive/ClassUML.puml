@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+interface Animal{
+void eat();
+}
+
+class Dog{
+void eat()
+}
+/'狗实现动物接口'/
+Dog ..|> Animal
+
+class Cat{
+void eat()
+}
+/'猫实现动物接口'/
+Cat ..|> Animal
+
+class Person{
+void feed()
+}
+
+/'人依赖动物接口'/
+Person ..> Animal
+
+
+
+
+
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Computer{
++ cpu:String
++ gpu:String
++ memory:String
++ hd:String
+}
+
+class Director{
++ builder(ComputerBuilder) Computer
+}
+Director ..> ComputerBuilder
+Director ..> Computer
+interface ComputerBuilder{
++ builder() Computer
+}
+class AdvancadComputerBuilder{}
+AdvancadComputerBuilder ..|>ComputerBuilder
+AdvancadComputerBuilder *-> Computer
+class MiddleComputerBuilder{}
+MiddleComputerBuilder ..|> ComputerBuilder
+MiddleComputerBuilder *-> Computer
+class LowComputerBuilder{}
+LowComputerBuilder ..|> ComputerBuilder
+LowComputerBuilder *-> Computer
+
+
+@enduml

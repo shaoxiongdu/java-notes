@@ -15,7 +15,7 @@
 </div>
 
 ## 总览
-![java-notes](./java-notes.png)
+![java-notes](images/java-notes.png)
 
 ## 清单
 

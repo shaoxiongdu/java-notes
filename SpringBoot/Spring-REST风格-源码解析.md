@@ -3,7 +3,7 @@
 
 ## 准备
 
-    - html
+- html
 
   ```html
   <form action="/user" method="POST">
@@ -12,7 +12,7 @@
   </form>
   ```
 
-    - Controller
+- Controller
 
   ```java
   @RequestMapping(value = "/user",method = RequestMethod.DELETE)
@@ -98,15 +98,5 @@
   此时，
 
   ### 原生的请求由POST方法改为参数`_method`中指定的请求类型。然后由Controller层接收。
-
-  ​
-
-
-
-
-
-
-
-
 
 > 文章已同步至GitHub开源项目: [Java超神之路](https://github.com/shaoxiongdu/java-notes) 更多Java相关知识，欢迎访问！

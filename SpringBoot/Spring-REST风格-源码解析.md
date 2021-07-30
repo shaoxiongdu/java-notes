@@ -1,6 +1,7 @@
 # Spring-REST风格-源码解析
 > 文章已同步至GitHub开源项目: [Java超神之路](https://github.com/shaoxiongdu/java-notes)
 
+SpringBoot支持的RESTful风格的请求方式，底层是如何实现的呢？
 ## 准备
 
 - html

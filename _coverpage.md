@@ -15,5 +15,5 @@
   
 - 计算机网络-分层概述
 
-[GitHub](https://github.com/shaoxiongdu/java-design-pattern)
+[GitHub](https://github.com/shaoxiongdu/java-notes)
 [快速开始](/?id=java学习笔记)

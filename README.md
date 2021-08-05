@@ -92,7 +92,7 @@ Java设计模式相关内容已整理至开源项目: [详解计算机网络](ht
 
 ## 更多开源项目推荐
 
-#### 我的公众号 【Github推荐】 持续分享好玩，有趣，又沙雕的开源项目!   欢迎关注 !
+#### 分享好玩的项目，挖掘开源的价值！
 
 > ![Github推荐](https://gitee.com/ShaoxiongDu/imageBed/raw/master/GithubShareQR.jpg)
 

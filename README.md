@@ -9,6 +9,7 @@
     <img src="https://img.shields.io/badge/Spring-源码解析-green">
     <img src="https://img.shields.io/badge/Redis-知识整理-red">
     <img src="https://img.shields.io/badge/计算机网络-分层概述-purple">
+    <img src="https://img.shields.io/badge/nginx-知识整理-orange">
     <img src="https://visitor-badge.glitch.me/badge?page_id=shaoxiongdu.java-notes">
 
 <h3><a href="https://shaoxiongdu.github.io/java-notes/#/" target="_blank">在线站点（阅读体验更好）</a></h3>
@@ -24,17 +25,21 @@ JVM相关知识已整理至开源项目: [JVM底层原理解析](https://github.
 
 ---
 
-### 【JavaSE】
-
-- [Java之多线程详解](./JavaSE/Java之多线程.md)
-
----
-
 ### 【Java设计模式】
 
 Java设计模式相关内容已整理至开源项目: [详解Java设计模式](https://github.com/shaoxiongdu/java-design-pattern)
 
 ---
+
+### 【计算机网络】
+
+Java设计模式相关内容已整理至开源项目: [详解计算机网络](https://github.com/shaoxiongdu/ComputerNetworks)
+
+---
+
+### 【JavaSE】
+
+- [Java之多线程详解](./JavaSE/Java之多线程.md)
 
 ### 【Spring】
 
@@ -46,11 +51,6 @@ Java设计模式相关内容已整理至开源项目: [详解Java设计模式](h
 ### 【SpringBoot】
 -  [SpringBoot-自动配置-源码解析](SpringBoot/SpringBoot自动配置原理解析.md)
 -  [SpringBoot-REST风格-源码解析](SpringBoot/Spring-REST风格-源码解析.md)
----
-
-### 【计算机网络】
-
-Java设计模式相关内容已整理至开源项目: [详解计算机网络](https://github.com/shaoxiongdu/ComputerNetworks)
 
 ---
 
@@ -60,6 +60,10 @@ Java设计模式相关内容已整理至开源项目: [详解计算机网络](ht
 -  [redis5新增数据类型](./Redis/redis5新增数据类型.md)
 
 ---
+
+### 【Nginx】
+
+- [Nginx的常见功能](./Nginx/Nginx常见功能.md)
 
 
 ## 反馈及改进

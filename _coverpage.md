@@ -13,7 +13,9 @@
   
 - Redis-知识整理
   
-- 计算机网络-分层概述
+- 计算机网络-理论知识
+
+- Nginx
 
 [GitHub](https://github.com/shaoxiongdu/java-notes)
 [快速开始](/?id=java学习笔记)

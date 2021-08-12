@@ -64,6 +64,7 @@ Java设计模式相关内容已整理至开源项目: [详解计算机网络](ht
 ### 【Nginx】
 
 - [Nginx的常见功能](./Nginx/Nginx常见功能.md)
+- [Nginx的原理轻探](./Nginx/Nginx原理解析.md)
 
 
 ## 反馈及改进

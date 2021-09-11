@@ -1,4 +1,4 @@
-# 手撕ArrayList源码.md
+# 手撕ArrayList源码
 
 > 文章首发于GitHub开源项目: [Java超神之路](https://github.com/shaoxiongdu/java-notes)
 

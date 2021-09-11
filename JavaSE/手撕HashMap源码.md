@@ -1,4 +1,4 @@
-# 手撕HashMap源码.md
+# 手撕HashMap源码
 
 > 文章已同步至GitHub开源项目: [Java超神之路](https://github.com/shaoxiongdu/java-notes)
 

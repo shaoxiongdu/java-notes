@@ -5,7 +5,8 @@
 <br>
 <div align="center">
     <img src="https://img.shields.io/badge/JVM-底层原理-blue">
-    <img src="https://img.shields.io/badge/JavaSE-基础-yellow">
+    <img src="https://img.shields.io/badge/Java-SE-yellow">
+    <img src="https://img.shields.io/badge/数据库-MySQL-orange">
     <img src="https://img.shields.io/badge/Spring-源码解析-green">
     <img src="https://img.shields.io/badge/Redis-知识整理-red">
     <img src="https://img.shields.io/badge/计算机网络-分层概述-purple">

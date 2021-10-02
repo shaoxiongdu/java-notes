@@ -19,6 +19,14 @@
 
 ---
 
+### 【JavaSE】
+
+- [Java之多线程详解](./JavaSE/Java之多线程.md)
+- [手撕ArrayList源码](./JavaSE/手撕ArrayList源码.md)
+- [手撕HashMap源码](./JavaSE/手撕HashMap源码.md)
+
+---
+
 ### 【JVM】
 
 JVM相关知识已整理至开源项目: [JVM底层原理解析](https://github.com/shaoxiongdu/JVMStudy)
@@ -29,6 +37,10 @@ JVM相关知识已整理至开源项目: [JVM底层原理解析](https://github.
 
 Java设计模式相关内容已整理至开源项目: [详解Java设计模式](https://github.com/shaoxiongdu/java-design-pattern)
 
+### MySQL数据库
+
+- [事务](./MySQL/事务.md)
+
 ---
 
 ### 【计算机网络】
@@ -36,12 +48,6 @@ Java设计模式相关内容已整理至开源项目: [详解Java设计模式](h
 Java设计模式相关内容已整理至开源项目: [详解计算机网络](https://github.com/shaoxiongdu/ComputerNetworks)
 
 ---
-
-### 【JavaSE】
-
-- [Java之多线程详解](./JavaSE/Java之多线程.md)
-- [手撕ArrayList源码](./JavaSE/手撕ArrayList源码.md)
-- [手撕HashMap源码](./JavaSE/手撕HashMap源码.md)
 
 ### 【Spring】
 

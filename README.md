@@ -38,12 +38,15 @@ JVM相关知识已整理至开源项目: [JVM底层原理解析](https://github.
 
 Java设计模式相关内容已整理至开源项目: [详解Java设计模式](https://github.com/shaoxiongdu/java-design-pattern)
 
+---
+
 ### MySQL数据库
 
 - [事务](./MySQL/事务.md)
 - [视图](./MySQL/视图.md)
 - [存储过程&函数](./MySQL/存储过程和函数.md)
 - [索引优化之路](./MySQL/索引.md)
+- [性能分析](./MySQL/性能分析.md)
 
 ---
 

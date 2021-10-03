@@ -83,15 +83,9 @@ Java设计模式相关内容已整理至开源项目: [详解计算机网络](ht
 
 ## 更多开源项目
 
-#### 安利一波我们的公众号：【挖掘开源的价值】
+#### 关注我们的公众号，我们的目标是：【分享好玩的项目，挖掘开源的价值】。
 
-每天都会分享一些好玩，有趣，又沙雕的开源项目。或者是比较实用的开发工具。
-
-### 我们的目标是：【分享好玩的项目，挖掘开源的价值】。
-
-> ![Github推荐](https://gitee.com/ShaoxiongDu/imageBed/raw/master/image-20210820144130666.png)
-
-
+> ![挖掘开源的价值](https://gitee.com/ShaoxiongDu/imageBed/raw/master/image-20210820144130666.png)
 
 ## 反馈及改进
 
@@ -116,11 +110,3 @@ Java设计模式相关内容已整理至开源项目: [详解计算机网络](ht
 >  1. 感谢BiliBili提供的在线课程平台 [BiliBili官网](https://www.bilibili.com)
 >  2. 感谢JetBrains提供的配套开发环境许可证 [JetBrains官网](https://www.jetbrains.com/)
 >  3. 感谢Gitee提供的图床平台 [图床地址](https://gitee.com/ShaoxiongDu/imageBed)
-
-## 更多开源项目推荐
-
-#### 分享好玩的项目，挖掘开源的价值！
-
-> ![Github推荐](https://gitee.com/ShaoxiongDu/imageBed/raw/master/image-20210805162948040.png)
-
-

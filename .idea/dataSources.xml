@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/temp</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="腾讯云数据库" uuid="c9b22f5f-7d13-4f83-aa8e-30816f712a91">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://152.136.194.158:3306/mysql</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

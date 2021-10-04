@@ -1,7 +1,5 @@
-# Java学习笔记
-<center>
+# Java成长之路
 
-</center>
 <br>
 <div align="center">
     <img src="https://img.shields.io/badge/JVM-底层-blue">

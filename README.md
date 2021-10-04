@@ -4,7 +4,7 @@
 </center>
 <br>
 <div align="center">
-    <img src="https://img.shields.io/badge/JVM-底层原理-blue">
+    <img src="https://img.shields.io/badge/JVM-底层-blue">
     <img src="https://img.shields.io/badge/Java-SE-yellow">
     <img src="https://img.shields.io/badge/数据库-MySQL-orange">
     <img src="https://img.shields.io/badge/Spring-源码解析-green">
@@ -30,13 +30,13 @@
 
 ### 【JVM】
 
-JVM相关知识已整理至开源项目: [JVM底层原理解析](https://github.com/shaoxiongdu/JVMStudy)
+已整理至开源项目: [JVM底层原理解析](https://github.com/shaoxiongdu/JVMStudy)
 
 ---
 
 ### 【Java设计模式】
 
-Java设计模式相关内容已整理至开源项目: [详解Java设计模式](https://github.com/shaoxiongdu/java-design-pattern)
+已整理至开源项目: [详解Java设计模式](https://github.com/shaoxiongdu/java-design-pattern)
 
 ---
 

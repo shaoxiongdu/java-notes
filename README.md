@@ -64,8 +64,10 @@ Java设计模式相关内容已整理至开源项目: [详解计算机网络](ht
 
 ### 【Spring】
 
-- [Spring-注解开发](./Spring/注解开发.md)
--  [Spring-IoC容器-源码解析](./Spring/Spring容器源码解析.md)
+- [Spring-IOC](./Spring/Spring-IOC.md)
+- [Spring-IOC-XML配置文件](./Spring/Spring-IOC-XML配置文件.md)
+- [Spring-IOC-注解开发](./Spring/Spring-IOC-注解开发.md)
+- [Spring-IoC容器-源码解析](./Spring/Spring-IOC源码解析.md)
 
 ---
 

@@ -32,11 +32,11 @@
 
 - ### `@Scope` ： 配置是否为单实例
 
-  - `prototype`: 多实例  `懒汉式`
-  - `singleton(默认值)` : 单实例  `饿汉式` 容器创建完毕就会被创建 
-    - 改为`懒汉式` ： 添加注解 `@lazy`
+  - `prototype`: 多实例  `懒加载` 每次调用getBean会创建对象
+  - `singleton(默认值)` : 单实例  `饿加载` 容器创建完毕就会被创建
+    - 单例情况下改为`懒加载` ： 添加注解 `@lazy`
 
-  - 在Web项目中
+  - 在Web项目中(过时)
     - request : 同一个请求创建一次
     - session: 同一个会话创建一次
 
@@ -44,7 +44,7 @@
 
   - 参数是一个`Condition接口的实现类`  该实现类中的matches方法返回true 则添加到容器中。
 
-  - 例子  如果当前系统时window 则添加baiduApi到容器中 
+  - 例子 如果当前系统时window 则添加baiduApi到容器中
 
     ```java
     	@Bean
@@ -282,32 +282,20 @@
 
 > Spring利用依赖注入（DI），完成对IOC容器中各个组件的依赖关系赋值。
 
-- ### `@Autowired`
+- ### `@Autowired`  Spring的规范
 
-  在需要注入的地方加上该注解即可
+  - 默认按照类型注入
+  - 添加注解`@Qualifier("id名称")`来设置按照名称注入，此时，待注入的属性名称和注入的组件id不同。
 
-  ```java
-  	@Autowired
-      private PersonService personService;
-  ```
+  - 属性`required`表示是否强制，true的时候，容器中没有对应的组件，就会报错。如果为false，IOC容器中没找到对应的组件，不报错，待注入的属性为null。
+  - 这个注解可以标注在有参构造，方法，属性等位置。此时，方法或者构造方法或者属性的值会从IOC容器中获取。
 
-  - 默认优先按照类型去IOC容器中寻找对应的对象，如果有多个，则属性名称在IOC容器中寻找对应id的组件进行注入。
-  - `@Qualifier("id名称")`来指定寻找的id，此时，待注入的属性名称和注入的组件id不同。
+- ### `@Resource` Java下的规范
+  - Resource 默认按照类型注入。也可添加属性name按照名称注入。
 
-  ```java
-  	@Qualifier("personService1")  //注入IOC容器中id为personService1的组件
-      @Autowired
-      private PersonService personService;
-  ```
+- ### `@Inject` Java下的规范
 
-  - `Autowired(required=false)`表示是否强制，如果为true，容器中没有对应的组件，就会报错。如果为false，IOC容器中没找到对应的组件，不报错，待注入的属性为null。
-  - `@Autowired`可以标注在有参构造，方法，属性等位置。此时，方法或者构造方法或者属性的值会从IOC容器中获取。
-
-- ### `@Resource` 和 `@Inject`
-
-  - Resource 默认通过待注入的属性名称进行注入。也可修改属性为指定的组件名称。但不支持`Autowired`中的Qualifier和required
   - @Inject 使用需要导入对应依赖。
-  - 这两个是Java下的规范，可以支持其他的IOC框架，Autiwired是Spring的规范，只支持此框架。
 
 - ### Aware接口
 

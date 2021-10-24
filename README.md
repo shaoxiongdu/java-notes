@@ -21,8 +21,8 @@
 ### 【JavaSE】
 
 - [Java之多线程详解](./JavaSE/Java之多线程.md)
-- [手撕ArrayList源码](./JavaSE/手撕ArrayList源码.md)
-- [手撕HashMap源码](./JavaSE/手撕HashMap源码.md)
+- [ArrayList源码解析](./JavaSE/手撕ArrayList源码.md)
+- [HashMap源码解析](./JavaSE/手撕HashMap源码.md)
 
 ---
 
@@ -67,6 +67,7 @@ Java设计模式相关内容已整理至开源项目: [详解计算机网络](ht
 - [Spring-IOC](./Spring/Spring-IOC.md)
 - [Spring-Bean管理-注解](./Spring/Spring-Bean管理-注解.md)
 - [Spring-IoC容器-源码解析](./Spring/Spring-IOC源码解析.md)
+- [Spring-AOP-基本原理](./Spring/Spring-AOP基本原理.md)
 
 ---
 
@@ -87,12 +88,6 @@ Java设计模式相关内容已整理至开源项目: [详解计算机网络](ht
 
 - [Nginx的常见功能](./Nginx/Nginx常见功能.md)
 - [Nginx的原理轻探](./Nginx/Nginx原理解析.md)
-
-## 更多开源项目
-
-#### 关注我们的公众号，我们的目标是：【分享好玩的项目，挖掘开源的价值】。
-
-> ![挖掘开源的价值](https://gitee.com/ShaoxiongDu/imageBed/raw/master/image-20210820144130666.png)
 
 ## 反馈及改进
 

@@ -92,7 +92,7 @@ Spring版本：5.3.1
 
 注：由于 Maven 的传递性，我们不必将所有需要的包全部配置依赖，而是配置最顶端的依赖，其他靠传递性导入。
 
-![images](img\img001.png)
+![images](https://images-1301128659.cos.ap-beijing.myqcloud.com/img001.png)
 
 ### 3、配置web.xml
 
@@ -683,7 +683,7 @@ public String testHello(){
 }
 ```
 
-![](img/img002.png)
+![](https://images-1301128659.cos.ap-beijing.myqcloud.com/img002.png)
 
 ### 2、转发视图
 
@@ -702,7 +702,7 @@ public String testForward(){
 }
 ```
 
-![image-20210706201316593](img/img003.png)
+![image-20210706201316593](https://images-1301128659.cos.ap-beijing.myqcloud.com/img003.png)
 
 ### 3、重定向视图
 
@@ -719,7 +719,7 @@ public String testRedirect(){
 }
 ```
 
-![image-20210706201602267](img/img004.png)
+![image-20210706201602267](https://images-1301128659.cos.ap-beijing.myqcloud.com/img004.png)
 
 > 注：
 >
@@ -2094,13 +2094,13 @@ ii. 如果没配置，则控制台报映射查找不到，客户端展示404错�
 
 ![image-20210709214911404](img/img006.png)
 
-![image-20210709214947432](img/img007.png)
+![image-20210709214947432](https://images-1301128659.cos.ap-beijing.myqcloud.com/img007.png)
 
 iii. 如果有配置，则访问目标资源（一般为静态资源，如：JS,CSS,HTML），找不到客户端也会展示404错误
 
 ![image-20210709215255693](img/img008.png)
 
-![image-20210709215336097](img/img009.png)
+![image-20210709215336097](https://images-1301128659.cos.ap-beijing.myqcloud.com/img009.png)
 
 b) 存在则执行下面的流程
 

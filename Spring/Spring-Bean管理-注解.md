@@ -1,6 +1,6 @@
 ## 组件注册
 
-- `@Component/Controller/Service/Repostory` : 导入自定义组件
+- `@Component/Controller/Service/Repostory` :注册自定义组件到容器中
 
   1. 加上约定的注解。
 
@@ -10,31 +10,11 @@
 
 - ### `@Configuration`: 标注配置类
 
-  ```java
-  @Configuration
-  public class BaiduApiConfig {
-      /**
-       * 给容器中添加bean
-       * @return 返回值为添加的bean
-       * 方法名称为bean的id
-       * 注解的value也为bean的id
-       */ 
-      @Bean(value = "baiduApi")
-      public BaiduApi baiduApi(){
-          BaiduApi baiduApi = new BaiduApi();
-          baiduApi.setKey("key123");
-          baiduApi.setToken("token123");
-          return baiduApi;
-      }
-  
-  }
-  ```
-
 - ### `@Scope` ： 配置是否为单实例
 
   - `prototype`: 多实例  `懒加载` 每次调用getBean会创建对象
   - `singleton(默认值)` : 单实例  `饿加载` 容器创建完毕就会被创建
-    - 单例情况下改为`懒加载` ： 添加注解 `@lazy`
+    -  `@lazy` 为true 表示设置为 懒加载。（单例模式下）
 
   - 在Web项目中(过时)
     - request : 同一个请求创建一次
@@ -126,6 +106,53 @@
              return new BaiduApiFactory();
          }
      ```
+
+- @Profile 根据当前环境，动态切换
+
+  ```java
+  @Configuration
+  public class DataSourceConfig {
+  
+      //开发环境
+      @Profile("development")
+      @Bean
+      public DataSource dataSourceDevelopment(){
+          DruidDataSource druidDataSource = new DruidDataSource();
+          druidDataSource.setUsername("root");
+          druidDataSource.setPassword("1002");
+          druidDataSource.setUrl("jdbc:mysql://localhost:3306/mysql");
+          druidDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+          return druidDataSource;
+      }
+  
+      //测试环境
+      @Profile("test")
+      @Bean
+      public DataSource dataSourceTest(){
+          DruidDataSource druidDataSource = new DruidDataSource();
+          druidDataSource.setUsername("root");
+          druidDataSource.setPassword("1002");
+          druidDataSource.setUrl("jdbc:mysql://localhost:3306/world");
+          druidDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+          return druidDataSource;
+      }
+  
+      //生产环境
+      @Profile("product")
+      @Bean
+      public DataSource dataSourceProduct(){
+          DruidDataSource druidDataSource = new DruidDataSource();
+          druidDataSource.setUsername("root");
+          druidDataSource.setPassword("1002");
+          druidDataSource.setUrl("jdbc:mysql://localhost:3306/sys");
+          druidDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+          return druidDataSource;
+      }
+  
+  }
+  ```
+
+  启动时添加参数 -Dspring.profiles.active=XXX 即可动态设置数据源。
 
 ## Bean的生命周期
 
@@ -289,15 +316,15 @@
   - 这个注解可以标注在有参构造，方法，属性等位置。此时，方法或者构造方法或者属性的值会从IOC容器中获取。
 
 - ### `@Resource` Java下的规范
-  - Resource 默认按照类型注入。也可添加属性name按照名称注入。
+  - Resource 默认按照名称注入。也可添加属性name按照名称注入。
 
 - ### `@Inject` Java下的规范
 
-  - @Inject 使用需要导入对应依赖。
+  - @Inject 使用需要导入对应依赖。 不支持require=false;
 
 - ### Aware接口
 
-  自定义组件想要使用SpringIOC容器底层的一些组件（ApplicatonContext,BeanFacotory….），可以让自定义组件实现XXXAware接口，在创建对象放入容器中的时候，就会调用对应的方法。获得对应的底层组件。
+  自定义组件想要使用SpringIOC容器底层的一些组件（ApplicatonContext,BeanFactory….），可以让自定义组件实现XXXAware接口，在创建对象放入容器中的时候，就会调用对应的方法。获得对应的底层组件。
 
   
 

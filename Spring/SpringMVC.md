@@ -1823,118 +1823,17 @@ protected void initStrategies(ApplicationContext context) {
 
 ### 3、DispatcherServlet调用组件处理请求
 
-##### a>processRequest()
+继承关系：**DispatcherServlet -> FrameworkServlet -> HttpServletBean -> HttpServlet**
 
-FrameworkServlet重写HttpServlet中的service()和doXxx()，这些方法中调用了processRequest(request, response)
+请求到达HttpServlet之后，会调用doGet/doPost方法，
 
-所在类：org.springframework.web.servlet.FrameworkServlet
+在子子类FrameworkServlet中重写该方法，调用processRequest(request,response)方法。
 
-```java
-protected final void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+processRequest调用doService方法。但该子类FrameworkServlet中的doService方法为抽象方法。
 
-    long startTime = System.currentTimeMillis();
-    Throwable failureCause = null;
+因此，请求到达子类DispatcherServlet中的doService方法。这个方法中关键行调用了doDispatch方法。
 
-    LocaleContext previousLocaleContext = LocaleContextHolder.getLocaleContext();
-    LocaleContext localeContext = buildLocaleContext(request);
-
-    RequestAttributes previousAttributes = RequestContextHolder.getRequestAttributes();
-    ServletRequestAttributes requestAttributes = buildRequestAttributes(request, response, previousAttributes);
-
-    WebAsyncManager asyncManager = WebAsyncUtils.getAsyncManager(request);
-    asyncManager.registerCallableInterceptor(FrameworkServlet.class.getName(), new RequestBindingInterceptor());
-
-    initContextHolders(request, localeContext, requestAttributes);
-
-    try {
-		// 执行服务，doService()是一个抽象方法，在DispatcherServlet中进行了重写
-        doService(request, response);
-    }
-    catch (ServletException | IOException ex) {
-        failureCause = ex;
-        throw ex;
-    }
-    catch (Throwable ex) {
-        failureCause = ex;
-        throw new NestedServletException("Request processing failed", ex);
-    }
-
-    finally {
-        resetContextHolders(request, previousLocaleContext, previousAttributes);
-        if (requestAttributes != null) {
-            requestAttributes.requestCompleted();
-        }
-        logResult(request, response, failureCause, asyncManager);
-        publishRequestHandledEvent(request, response, startTime, failureCause);
-    }
-}
-```
-
-##### b>doService()
-
-所在类：org.springframework.web.servlet.DispatcherServlet
-
-```java
-@Override
-protected void doService(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    logRequest(request);
-
-    // Keep a snapshot of the request attributes in case of an include,
-    // to be able to restore the original attributes after the include.
-    Map<String, Object> attributesSnapshot = null;
-    if (WebUtils.isIncludeRequest(request)) {
-        attributesSnapshot = new HashMap<>();
-        Enumeration<?> attrNames = request.getAttributeNames();
-        while (attrNames.hasMoreElements()) {
-            String attrName = (String) attrNames.nextElement();
-            if (this.cleanupAfterInclude || attrName.startsWith(DEFAULT_STRATEGIES_PREFIX)) {
-                attributesSnapshot.put(attrName, request.getAttribute(attrName));
-            }
-        }
-    }
-
-    // Make framework objects available to handlers and view objects.
-    request.setAttribute(WEB_APPLICATION_CONTEXT_ATTRIBUTE, getWebApplicationContext());
-    request.setAttribute(LOCALE_RESOLVER_ATTRIBUTE, this.localeResolver);
-    request.setAttribute(THEME_RESOLVER_ATTRIBUTE, this.themeResolver);
-    request.setAttribute(THEME_SOURCE_ATTRIBUTE, getThemeSource());
-
-    if (this.flashMapManager != null) {
-        FlashMap inputFlashMap = this.flashMapManager.retrieveAndUpdate(request, response);
-        if (inputFlashMap != null) {
-            request.setAttribute(INPUT_FLASH_MAP_ATTRIBUTE, Collections.unmodifiableMap(inputFlashMap));
-        }
-        request.setAttribute(OUTPUT_FLASH_MAP_ATTRIBUTE, new FlashMap());
-        request.setAttribute(FLASH_MAP_MANAGER_ATTRIBUTE, this.flashMapManager);
-    }
-
-    RequestPath requestPath = null;
-    if (this.parseRequestPath && !ServletRequestPathUtils.hasParsedRequestPath(request)) {
-        requestPath = ServletRequestPathUtils.parseAndCache(request);
-    }
-
-    try {
-        // 处理请求和响应
-        doDispatch(request, response);
-    }
-    finally {
-        if (!WebAsyncUtils.getAsyncManager(request).isConcurrentHandlingStarted()) {
-            // Restore the original attribute snapshot, in case of an include.
-            if (attributesSnapshot != null) {
-                restoreAttributesAfterInclude(request, attributesSnapshot);
-            }
-        }
-        if (requestPath != null) {
-            ServletRequestPathUtils.clearParsedRequestPath(request);
-        }
-    }
-}
-```
-
-##### c>doDispatch()
-
-所在类：org.springframework.web.servlet.DispatcherServlet
+##### 处理请求的关键方法doDispatch() 
 
 ```java
 protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -1949,30 +1848,28 @@ protected void doDispatch(HttpServletRequest request, HttpServletResponse respon
         Exception dispatchException = null;
 
         try {
+            
+            //检查是否为文件上传请求
             processedRequest = checkMultipart(request);
+            
+            //如果是 将该值赋值为false。
             multipartRequestParsed = (processedRequest != request);
 
-            // Determine handler for the current request.
-            /*
-            	mappedHandler：调用链
-                包含handler、interceptorList、interceptorIndex
-            	handler：浏览器发送的请求所匹配的控制器方法
-            	interceptorList：处理控制器方法的所有拦截器集合
-            	interceptorIndex：拦截器索引，控制拦截器afterCompletion()的执行
-            */
+            //通过requestmapping注解寻找该请求的URL对应的控制器/处理器handler
             mappedHandler = getHandler(processedRequest);
+            //如果没有找到，抛异常或者404页面
             if (mappedHandler == null) {
                 noHandlerFound(processedRequest, response);
                 return;
             }
 
-            // Determine handler adapter for the current request.
-           	// 通过控制器方法创建相应的处理器适配器，调用所对应的控制器方法
+           	// 通过控制器方法创建相应的处理器适配器
             HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
 
-            // Process last-modified header, if supported by the handler.
+            // 获取请求方式
             String method = request.getMethod();
             boolean isGet = "GET".equals(method);
+            //如果是get请求则缓存
             if (isGet || "HEAD".equals(method)) {
                 long lastModified = ha.getLastModified(request, mappedHandler.getHandler());
                 if (new ServletWebRequest(request, response).checkNotModified(lastModified) && isGet) {
@@ -1980,32 +1877,30 @@ protected void doDispatch(HttpServletRequest request, HttpServletResponse respon
                 }
             }
 			
-            // 调用拦截器的preHandle()
+            // 调用拦截器的前置拦截preHandle()
             if (!mappedHandler.applyPreHandle(processedRequest, response)) {
                 return;
             }
 
-            // Actually invoke the handler.
-            // 由处理器适配器调用具体的控制器方法，最终获得ModelAndView对象
+            // 由处理器适配器调用具体的控制器方法，将结果封装到ModelAndView对象中
             mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
 
             if (asyncManager.isConcurrentHandlingStarted()) {
                 return;
             }
-
+			//如果返回的mv为null,则使用默认行为
             applyDefaultViewName(processedRequest, mv);
-            // 调用拦截器的postHandle()
+            // 调用拦截器的后置拦截postHandle()
             mappedHandler.applyPostHandle(processedRequest, response, mv);
         }
         catch (Exception ex) {
             dispatchException = ex;
         }
         catch (Throwable err) {
-            // As of 4.3, we're processing Errors thrown from handler methods as well,
-            // making them available for @ExceptionHandler methods and other scenarios.
+            
             dispatchException = new NestedServletException("Handler dispatch failed", err);
         }
-        // 后续处理：处理模型数据和渲染视图
+        // 处理mv模型数据和渲染视图 并转发到目标页面 方法具体代码见下代码块。
         processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);
     }
     catch (Exception ex) {
@@ -2032,12 +1927,12 @@ protected void doDispatch(HttpServletRequest request, HttpServletResponse respon
 }
 ```
 
-##### d>processDispatchResult()
+处理mv模型数据和渲染视图，转发到目标页面的方法如下。
+
+##### processDispatchResult()
 
 ```java
-private void processDispatchResult(HttpServletRequest request, HttpServletResponse response,
-                                   @Nullable HandlerExecutionChain mappedHandler, @Nullable ModelAndView mv,
-                                   @Nullable Exception exception) throws Exception {
+private void processDispatchResult(HttpServletRequest request, HttpServletResponse response,HandlerExecutionChain mappedHandler, ModelAndView mv,Exception exception) throws Exception {
 
     boolean errorView = false;
 
@@ -2084,22 +1979,15 @@ private void processDispatchResult(HttpServletRequest request, HttpServletRespon
 
 1. 用户向服务器发送请求，请求被SpringMVC 前端控制器 DispatcherServlet捕获。
 
-2. DispatcherServlet对请求URL进行解析，得到请求资源标识符（URI），判断请求URI对应的映射：
+2. DispatcherServlet中的doDispatch方法对请求URL进行解析，通过getHeandler方法根据url获取能够处理该请求的处理器handler. 
 
    - ### 不存在
 
      - 再判断是否配置了mvc:default-servlet-handler
        - 如果没配置，则控制台报映射查找不到，客户端展示404错误
+       - 如果有配置，则访问目标资源（一般为静态资源，如：JS,CSS,HTML)，找不到客户端也会展示404错误
 
 
-
-![image-20210709214947432](https://images-1301128659.cos.ap-beijing.myqcloud.com/img007.png)
-
-- ​				如果有配置，则访问目标资源（一般为静态资源，如：JS,CSS,HTML)，找不到客户端也会展示404错误
-
-
-
-![image-20210709215336097](https://images-1301128659.cos.ap-beijing.myqcloud.com/img009.png)
 
 - ###  	存在
   1. 根据该URI，调用HandlerMapping获得该Handler配置的所有相关的对象（包括Handler对象以及Handler对象对应的拦截器），最后以HandlerExecutionChain执行链对象的形式返回。
@@ -2110,8 +1998,9 @@ private void processDispatchResult(HttpServletRequest request, HttpServletRespon
      - 数据转换：对请求消息进行数据转换。如String转换成Integer、Double
      -  数据格式化：对请求消息进行数据格式化。 如将字符串转换成格式化数字或格式化日期
      -  数据验证： 验证数据的有效性（长度、格式等），验证结果存储到BindingResult或Error中
-  5. Handler执行完成后，向DispatcherServlet 返回一个ModelAndView对象
-  6. 此时将开始执行拦截器的postHandle(...)方法【逆向】。
-  7. 根据返回的ModelAndView（此时会判断是否存在异常：如果存在异常，则执行HandlerExceptionResolver进行异常处理）选择一个适合的ViewResolver进行视图解析，根据Model和View，来渲染视图。
+  5. Handler执行完成后，将返回的结果封装到ModelAndView中。
+  6. 执行拦截器的postHandle(...)方法【逆向】。
+  7. 根据返回的ModelAndView，选择一个适合的ViewResolver进行视图解析，从请求作用域中拿到数据，渲染到view中。
   8. 渲染视图完毕执行拦截器的afterCompletion(…)方法【逆向】。
   9. 将渲染结果返回给客户端。
+  9. 客户端/浏览器对渲染结果进行显示。

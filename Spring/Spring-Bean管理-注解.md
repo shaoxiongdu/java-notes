@@ -247,9 +247,7 @@
 
 - 通过`@Value`:   直接指定
 
-- 通过配置文件赋值
-
-  通过`@PropertySource`注解指出配置文件的位置 
+- 通过配置文件赋值 在配置类中加入注解`@PropertySource`注解指出配置文件的位置 
 
   ```java
   @Configuration

@@ -72,7 +72,7 @@ Java设计模式相关内容已整理至开源项目: [详解计算机网络](ht
 
 ### 【SpringBoot】
 -  [SpringBoot-自动配置-源码解析](SpringBoot/SpringBoot自动配置原理解析.md)
--  [SpringBoot-REST风格-源码解析](SpringBoot/Spring-REST风格-源码解析.md)
+-  [SpringBoot-REST风格-源码解析](Spring/Spring-REST风格-源码解析.md)
 
 ---
 

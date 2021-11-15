@@ -692,8 +692,6 @@ public void refresh() throws BeansException, IllegalStateException {
     	}
     ```
 
-
-
 ## 总结
 
 1. ### Spirng容器启动的时候，首先保存所有已经注册的bean的定义信息

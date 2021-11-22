@@ -9,6 +9,7 @@
     <img src="https://img.shields.io/badge/Redis-知识整理-red">
     <img src="https://img.shields.io/badge/计算机网络-分层概述-purple">
     <img src="https://img.shields.io/badge/nginx-知识整理-orange">
+    <img src="https://img.shields.io/badge/RabbitMQ-消息中间件-orange">
     <img src="https://visitor-badge.glitch.me/badge?page_id=shaoxiongdu.java-notes">
 
 <h3><a href="https://shaoxiongdu.github.io/java-notes/#/" target="_blank">在线站点（阅读体验更好）</a></h3>
@@ -87,6 +88,17 @@ Java设计模式相关内容已整理至开源项目: [详解计算机网络](ht
 
 - [Nginx的常见功能](./Nginx/Nginx常见功能.md)
 - [Nginx的原理轻探](./Nginx/Nginx原理解析.md)
+
+---
+
+### 【RabbitMQ消息中间件】
+
+- [RabbitMQ简述](./RabbitMQ/RabbitMQ.md)
+- [简单模型](./RabbitMQ/简单模型.md)
+- [广播模型](./RabbitMQ/广播模型.md)
+- [工作队列模型/任务模型](./RabbitMQ/工作队列模型（任务队列）.md)
+- [路由模型](./RabbitMQ/路由模型.md)
+- [SpringBoot整合RabbitMQ](./RabbitMQ/SpringBoot整合RabbitMQ.md)
 
 ## 反馈及改进
 

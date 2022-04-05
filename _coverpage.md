@@ -15,7 +15,7 @@
   
 - 计算机网络-理论知识
 
-- Nginx
+- Nginx-笔记
 
 [GitHub](https://github.com/shaoxiongdu/java-notes)
 [快速开始](/?id=java成长之路)
